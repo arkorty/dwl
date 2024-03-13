@@ -142,7 +142,7 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 
 /* commands */
 static const char *termcmd[]    = { "alacritty", NULL };
-static const char *menucmd[]    = { "rofi", "-show", "combi", "-combi-modi", "drun,run", "-mode", "combi", "-show-icons", NULL };
+static const char *menucmd[]    = { "rofi", "-show", "combi", "-combi-modi", "drun,run", "-modi", "combi", "-show-icons", NULL };
 static const char *lockscrn[]   = { "swaylock", "-feS", "--effect-blur", "4x3", "--effect-greyscale", "--indicator-radius", "24", "--indicator-thickness", "8", "--indicator-x-position", "64", "--indicator-y-position", "64", NULL };
 static const char *audioctl[]   = { "pavucontrol", NULL };
 static const char scrnshot[]    = { "slurp | grim -g - $(xdg-user-dir PICTURES)/Screenshots/$(date +%F-%T.png)" };
