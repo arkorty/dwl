@@ -160,6 +160,18 @@ static const char *bluecmd[]    = { "alacritty", "--class", "floatingterm,floati
 static const Key keys[] = {
 	/* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
 	/* modifier                  key                 function        argument */
+    { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_A,             spawn,       {.v = audioctl } },
+    { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_L,             spawn,       {.v = lockscrn } },
+    { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_N,             spawn,       {.v = netmcmd } },
+    { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_B,             spawn,       {.v = bluecmd } },
+    { MODKEY,                    XKB_KEY_Print,         spawn,       SHCMD(fscrnshot) },
+    { 0,                         XKB_KEY_Print,         spawn,       SHCMD(scrnshot) },
+    { 0,                 XKB_KEY_XF86AudioRaiseVolume,  spawn,       {.v = volinc } },
+    { 0,                 XKB_KEY_XF86AudioLowerVolume,  spawn,       {.v = voldec } },
+    { 0,                 XKB_KEY_XF86AudioMute,         spawn,       {.v = volmute } },
+    { 0,                 XKB_KEY_XF86MonBrightnessUp,   spawn,       {.v = brightinc } },
+    { 0,                 XKB_KEY_XF86MonBrightnessDown, spawn,       {.v = brightdec } },
+
 	{ MODKEY,                    XKB_KEY_p,          spawn,          {.v = menucmd} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Return,     spawn,          {.v = termcmd} },
 	{ MODKEY,                    XKB_KEY_j,          focusstack,     {.i = +1} },
