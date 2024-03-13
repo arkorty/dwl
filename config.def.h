@@ -21,11 +21,39 @@ static const float fullscreen_bg[]         = {0.1f, 0.1f, 0.1f, 1.0f}; /* You ca
 static int log_level = WLR_ERROR;
 
 static const Rule rules[] = {
-	/* app_id     title       tags mask     isfloating   monitor */
-	/* examples:
-	{ "Gimp",     NULL,       0,            1,           -1 },
-	*/
-	{ "firefox",  NULL,       1 << 8,       0,           -1 },
+    /* app_id				    title    tags mask	  isfloating	 monitor */
+    /* examples:
+    { "Gimp",				    NULL,	 0,			   1,			 -1 },
+    */
+	{ "Pavucontrol",            NULL,    0,            1,            -1 },
+	{ "Galculator",             NULL,    0,            1,            -1 },
+	{ "Lxappearance",           NULL,    0,            1,            -1 },
+	{ "nmtui",                  NULL,    0,            1,            -1 },
+	{ "bluetuith",              NULL,    0,            1,            -1 },
+	{ "backlight",              NULL,    0,            1,            -1 },
+	{ "btop",                   NULL,    0,            1,            -1 },
+	{ "fkill",                  NULL,    0,            1,            -1 },
+	{ "Localsend",              NULL,    0,            1,            -1 },
+	{ "Code",                   NULL,    1 << 1,       0,            -1 },
+	{ "neovide",                NULL,    1 << 1,       0,            -1 },
+	{ "Gimp",                   NULL,    1 << 1,       1,            -1 },
+	{ "ghb",                    NULL,    1 << 1,       1,            -1 },
+	{ "Nemo",                   NULL,    1 << 1,       0,            -1 },
+	{ "helvum",                 NULL,    1 << 1,       0,            -1 },
+	{ "firefox",                NULL,    1 << 2,       0,            -1 },
+	{ "Zathura",                NULL,    1 << 3,       0,            -1 },
+	{ "obsidian",               NULL,    1 << 3,       0,            -1 },
+	{ "libreoffice",            NULL,    1 << 3,       0,            -1 },
+	{ "discord",                NULL,    1 << 4,       0,            -1 },
+	{ "ZapZap",                 NULL,    1 << 4,       0,            -1 },
+	{ "org.telegram.desktop",   NULL,    1 << 4,       0,            -1 },
+	{ "Spotify",                NULL,    1 << 5,       0,            -1 },
+	{ "YouTube Music",          NULL,    1 << 5,       0,            -1 },
+	{ "qBittorrent",            NULL,    1 << 6,       0,            -1 },
+	{ "obs",                    NULL,    1 << 7,       0,            -1 },
+	{ "bottles",                NULL,    1 << 7,       0,            -1 },
+	{ "goverlay",               NULL,    1 << 7,       0,            -1 },
+	{ "steam",                  NULL,    1 << 7,       0,            -1 },
 };
 
 /* layout(s) */
