@@ -142,8 +142,20 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *termcmd[] = { "foot", NULL };
-static const char *menucmd[] = { "bemenu-run", NULL };
+static const char *termcmd[]    = { "alacritty", NULL };
+static const char *menucmd[]    = { "rofi", "-show", "combi", "-combi-modi", "drun,run", "-mode", "combi", "-show-icons", NULL };
+static const char *lockscrn[]   = { "swaylock", "-feS", "--effect-blur", "4x3", "--effect-greyscale", "--indicator-radius", "24", "--indicator-thickness", "8", "--indicator-x-position", "64", "--indicator-y-position", "64", NULL };
+static const char *audioctl[]   = { "pavucontrol", NULL };
+static const char scrnshot[]    = { "slurp | grim -g - $(xdg-user-dir PICTURES)/Screenshots/$(date +%F-%T.png)" };
+static const char fscrnshot[]   = { "grim $(xdg-user-dir PICTURES)/Screenshots/$(date +%F-%T.png)" };
+static const char *volmute[]    = { "wpctl", "set-mute", "@DEFAULT_SINK@", "toggle", NULL };
+static const char *volinc[]     = { "wpctl", "set-volume", "@DEFAULT_SINK@", "0.05+", NULL };
+static const char *voldec[]     = { "wpctl", "set-volume", "@DEFAULT_SINK@", "0.05-", NULL };
+static const char *brightinc[]  = { "xbacklight", "-inc", "5", "-steps", "5", NULL };
+static const char *brightdec[]  = { "xbacklight", "-dec", "5", "-steps", "5", NULL };
+static const char *netmcmd[]    = { "alacritty", "--class", "floatingterm,floatingterm", "-e", "nmtui", NULL };
+static const char *bluecmd[]    = { "alacritty", "--class", "floatingterm,floatingterm", "-e", "bluetuith", NULL };
+
 
 static const Key keys[] = {
 	/* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
