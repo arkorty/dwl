@@ -35,6 +35,7 @@ static const Rule rules[] = {
 	{ "Gimp",                   NULL,    1 << 1,       1,            -1 },
 	{ "ghb",                    NULL,    1 << 1,       1,            -1 },
 	{ "nemo",                   NULL,    1 << 1,       0,            -1 },
+	{ "foot",                   NULL,    1 << 1,       0,            -1 },
 	{ "org.pipewire.Helvum",    NULL,    1 << 1,       0,            -1 },
 	{ "firefox",                NULL,    1 << 2,       0,            -1 },
 	{ "org.pwmt.zathura",       NULL,    1 << 3,       0,            -1 },
