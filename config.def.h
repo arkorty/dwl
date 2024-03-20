@@ -21,34 +21,35 @@ static const float fullscreen_bg[]         = {0.1f, 0.1f, 0.1f, 1.0f}; /* You ca
 static int log_level = WLR_ERROR;
 
 static const Rule rules[] = {
-    /* app_id				    title    tags mask	  isfloating	 monitor */
+	/* app_id                   title    tags mask    isfloating monitor scratchkey */
     /* examples:
-    { "Gimp",				    NULL,	 0,			   1,			 -1 },
+    { "Gimp",				    NULL,	 0,			  1,	     -1 },
     */
-	{ "pavucontrol",            NULL,    0,            1,            -1 },
-	{ "galculator",             NULL,    0,            1,            -1 },
-	{ "Lxappearance",           NULL,    0,            1,            -1 },
-	{ "floatingterm",           NULL,    0,            1,            -1 },
-	{ "localsend_app",          NULL,    0,            1,            -1 },
-	{ "Code",                   NULL,    1 << 1,       0,            -1 },
-	{ "neovide",                NULL,    1 << 1,       0,            -1 },
-	{ "Gimp",                   NULL,    1 << 1,       1,            -1 },
-	{ "ghb",                    NULL,    1 << 1,       1,            -1 },
-	{ "nemo",                   NULL,    1 << 1,       0,            -1 },
-	{ "foot",                   NULL,    1 << 1,       0,            -1 },
-	{ "org.pipewire.Helvum",    NULL,    1 << 1,       0,            -1 },
-	{ "firefox",                NULL,    1 << 2,       0,            -1 },
-	{ "org.pwmt.zathura",       NULL,    1 << 3,       0,            -1 },
-	{ "marktext",               NULL,    1 << 3,       0,            -1 },
-	{ "libreoffice",            NULL,    1 << 3,       0,            -1 },
-	{ "discord",                NULL,    1 << 4,       0,            -1 },
-	{ "org.telegram.desktop",   NULL,    1 << 4,       0,            -1 },
-	{ "Spotify",                NULL,    1 << 5,       0,            -1 },
-	{ "YouTube Music",          NULL,    1 << 5,       0,            -1 },
-	{ "qBittorrent",            NULL,    1 << 6,       0,            -1 },
-	{ "obs",                    NULL,    1 << 7,       0,            -1 },
-	{ "bottles",                NULL,    1 << 7,       0,            -1 },
-	{ "steam",                  NULL,    1 << 7,       0,            -1 },
+	{ NULL,                     "scratchpad", 0,      1,         -1,     's' },
+	{ "pavucontrol",            NULL,         0,      1,         -1,     0   },
+	{ "galculator",             NULL,         0,      1,         -1,     0   },
+	{ "Lxappearance",           NULL,         0,      1,         -1,     0   },
+	{ "floatingterm",           NULL,         0,      1,         -1,     0   },
+	{ "localsend_app",          NULL,         0,      1,         -1,     0   },
+	{ "Code",                   NULL,         1 << 1, 0,         -1,     0   },
+	{ "neovide",                NULL,         1 << 1, 0,         -1,     0   },
+	{ "Gimp",                   NULL,         1 << 1, 1,         -1,     0   },
+	{ "ghb",                    NULL,         1 << 1, 1,         -1,     0   },
+	{ "nemo",                   NULL,         1 << 1, 0,         -1,     0   },
+	{ "foot",                   NULL,         1 << 1, 0,         -1,     0   },
+	{ "org.pipewire.Helvum",    NULL,         1 << 1, 0,         -1,     0   },
+	{ "firefox",                NULL,         1 << 2, 0,         -1,     0   },
+	{ "org.pwmt.zathura",       NULL,         1 << 3, 0,         -1,     0   },
+	{ "marktext",               NULL,         1 << 3, 0,         -1,     0   },
+	{ "libreoffice",            NULL,         1 << 3, 0,         -1,     0   },
+	{ "discord",                NULL,         1 << 4, 0,         -1,     0   },
+	{ "org.telegram.desktop",   NULL,         1 << 4, 0,         -1,     0   },
+	{ "Spotify",                NULL,         1 << 5, 0,         -1,     0   },
+	{ "YouTube Music",          NULL,         1 << 5, 0,         -1,     0   },
+	{ "qBittorrent",            NULL,         1 << 6, 0,         -1,     0   },
+	{ "obs",                    NULL,         1 << 7, 0,         -1,     0   },
+	{ "bottles",                NULL,         1 << 7, 0,         -1,     0   },
+	{ "steam",                  NULL,         1 << 7, 0,         -1,     0   },
 };
 
 /* layout(s) */
@@ -151,6 +152,8 @@ static const char *brightdec[]  = { "xbacklight", "-dec", "5", "-steps", "5", NU
 static const char *netmcmd[]    = { "alacritty", "--class", "floatingterm,floatingterm", "-e", "nmtui", NULL };
 static const char *bluecmd[]    = { "alacritty", "--class", "floatingterm,floatingterm", "-e", "bluetuith", NULL };
 
+/* named scratchpads - First arg only serves to match against key in rules*/
+static const char *scratchpadcmd[] = { "s", "alacritty", "-t", "scratchpad", NULL };
 
 static const Key keys[] = {
 	/* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
@@ -169,6 +172,7 @@ static const Key keys[] = {
 
 	{ MODKEY,                    XKB_KEY_p,          spawn,          {.v = menucmd} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Return,     spawn,          {.v = termcmd} },
+	{ MODKEY,                    XKB_KEY_grave,      togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                    XKB_KEY_b,          togglebar,      {0} },
 	{ MODKEY,                    XKB_KEY_j,          focusstack,     {.i = +1} },
 	{ MODKEY,                    XKB_KEY_k,          focusstack,     {.i = -1} },
